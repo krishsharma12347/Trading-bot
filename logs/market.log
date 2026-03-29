@@ -1,0 +1,20 @@
+import logging
+
+# Configure logging
+logging.basicConfig(
+    filename="logs/market.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s"
+)
+
+def place_market_order(symbol, side, quantity):
+    order = client.futures_create_order(
+        symbol=symbol,
+        side=side,
+        type="MARKET",
+        quantity=quantity,
+        recvWindow=60000
+    )
+    logging.info(order)   # Save to log file
+    print(order)
+    return order
